@@ -1,14 +1,13 @@
 {
-  "extends": ["react-app", "shared-config"],
+  "extends": ["react-app", "eslint-config-react-app"],
   "rules": {
-    "additional-rule": "warn"
+    "no-multi-spaces": "error"
   },
   "overrides": [
     {
       "files": ["**/*.ts?(x)"],
       "rules": {
-        "additional-typescript-only-rule": "warn",
-        "no-multi-spaces": "error"
+        
       }
     }
   ]

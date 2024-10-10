@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import type { FormProps } from "antd";
 import { Button, Checkbox, Form, Input } from "antd";
-
+import Login from "./Login";
+import Register from "./Register";
+import "./app.scss";
 type FieldType = {
   username?: string;
   password?: string;
@@ -16,42 +18,21 @@ const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
 
-const App: React.FC = () => (
-  <Form
-    name="login"
-    initialValues={{ remember: true }}
-    onFinish={onFinish}
-    onFinishFailed={onFinishFailed}
-    autoComplete="off"
-  >
-    <Form.Item
-      name="username"
-      rules={[{ required: true, message: "请输入用户名!" }]}
-    >
-      <Input placeholder={"请输入用户名"} />
-    </Form.Item>
-
-    <Form.Item
-      name="password"
-      rules={[{ required: true, message: "请输入密码!" }]}
-    >
-      <Input.Password placeholder={"请输入密码"} />
-    </Form.Item>
-
-    <Form.Item
-      name="remember"
-      valuePropName="checked"
-      wrapperCol={{ offset: 8, span: 16 }}
-    >
-      <Checkbox>Remember me</Checkbox>
-    </Form.Item>
-
-    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-      <Button type="primary" htmlType="submit">
-        登录
-      </Button>
-    </Form.Item>
-  </Form>
-);
+const App: React.FC = () => {
+  const [type, setType] = useState<number>(1);
+  const changeType = (type: number) => {
+    setType(type);
+  };
+  return (
+    <div className="wrapper">
+      <div className="title">{type === 1 ? "登录" : "注册"}</div>
+      {type === 1 ? (
+        <Login changeType={changeType} />
+      ) : (
+        <Register changeType={changeType} />
+      )}
+    </div>
+  );
+};
 
 export default App;
