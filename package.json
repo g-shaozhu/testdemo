@@ -32,7 +32,6 @@
     "file-loader": "^6.2.0",
     "fs-extra": "^10.0.0",
     "html-webpack-plugin": "^5.5.0",
-    "husky": "^9.1.6",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.3",
     "jest-resolve": "^27.4.2",
@@ -69,8 +68,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "lint": "eslint 'src/**/*.{js,ts,tsx}'"
+    "test": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": [
@@ -86,8 +84,8 @@
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"
-     ]
-   },
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -155,5 +153,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "husky": "^9.1.6"
   }
 }
